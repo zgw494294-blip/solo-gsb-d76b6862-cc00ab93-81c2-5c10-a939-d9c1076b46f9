@@ -1,0 +1,17 @@
+services:
+  queue:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      # TQ_DB_PATH: /data/queue.db
+      # TQ_LEASE_TTL_SECONDS: "30"
+      # TQ_MAX_ATTEMPTS: "3"
+      # TQ_MAX_BATCH_SIZE: "100"
+      TZ: UTC
+    volumes:
+      - queue-data:/data
+    restart: unless-stopped
+
+volumes:
+  queue-data:
